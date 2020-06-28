@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+dependencies {
+    implementation project(":first-module")
+    testImplementation project(":first-module").sourceSets.test.output
+    implementation 'io.quarkus:quarkus-resteasy-jsonb'
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+test {
+    useJUnitPlatform()
+}
